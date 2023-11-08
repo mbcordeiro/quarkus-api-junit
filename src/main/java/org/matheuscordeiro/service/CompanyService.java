@@ -2,6 +2,7 @@ package org.matheuscordeiro.service;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import org.matheuscordeiro.entity.Company;
 import org.matheuscordeiro.repository.CompanyRepository;
 
@@ -13,6 +14,7 @@ public class CompanyService {
     @Inject
     CompanyRepository companyRepository;
 
+    @Transactional
     public Optional<Company> save(Company company) {
         try {
             companyRepository.persist(company);
